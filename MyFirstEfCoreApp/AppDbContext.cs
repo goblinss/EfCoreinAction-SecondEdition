@@ -8,9 +8,7 @@ namespace MyFirstEfCoreApp
     public class AppDbContext : DbContext
     {
         private const string ConnectionString = //#A
-            @"Server=(localdb)\mssqllocaldb;
-             Database=MyFirstEfCoreDb;
-             Trusted_Connection=True";
+            "Server=localhost;Database=MyFirstEfCoreDb;MultipleActiveResultSets=true;User=sa;Password=Password.1";
 
         public DbSet<Book> Books { get; set; }
 
