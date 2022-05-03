@@ -55,10 +55,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showLog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<Chapter3DbContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<Chapter3DbContext>(log =>
             {
                 if (showLog)
-                    _output.WriteLine(log.DecodeMessage());
+                    _output.WriteLine(log);
             });
             using (var context = new Chapter3DbContext(options))
             {

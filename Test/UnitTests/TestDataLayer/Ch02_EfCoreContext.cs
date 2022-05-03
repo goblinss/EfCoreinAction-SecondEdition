@@ -92,7 +92,7 @@ namespace Test.UnitTests.TestDataLayer
         public void TestCreateDataSqliteInMemoryOk()
         {
             //SETUP
-            var options = SqliteInMemory.CreateOptionsWithLogging<EfCoreContext>(log => _output.WriteLine(log.Message));
+            var options = SqliteInMemory.CreateOptionsWithLogTo<EfCoreContext>(log => _output.WriteLine(log));
             using (var context = new EfCoreContext(options))
             {
 

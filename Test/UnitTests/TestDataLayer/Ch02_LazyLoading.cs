@@ -27,10 +27,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showlog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<LazyInjectContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<LazyInjectContext>(log =>
             {
                 if (showlog)
-                    _output.WriteLine(log.Message);
+                    _output.WriteLine(log);
             });
             using var context = new LazyInjectContext(options);
             context.Database.EnsureCreated();
@@ -63,10 +63,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showlog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<LazyInjectContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<LazyInjectContext>(log =>
             {
                 if (showlog)
-                    _output.WriteLine(log.Message);
+                    _output.WriteLine(log);
             });
             using var context = new LazyInjectContext(options);
             context.Database.EnsureCreated();
@@ -128,10 +128,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showLog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<LazyProxyContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<LazyProxyContext>(log =>
             {
                 if (showLog)
-                    _output.WriteLine(log.DecodeMessage());
+                    _output.WriteLine(log);
             }, builder: builder => builder.UseLazyLoadingProxies());
 
             using var context = new LazyProxyContext(options);

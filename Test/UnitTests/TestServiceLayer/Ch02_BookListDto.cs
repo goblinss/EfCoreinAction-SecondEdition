@@ -29,10 +29,10 @@ namespace Test.UnitTests.TestServiceLayer
         {
             //SETUP
             var showLog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<EfCoreContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<EfCoreContext>(log =>
             {
                 if (showLog)
-                    _output.WriteLine(log.DecodeMessage());
+                    _output.WriteLine(log);
             });
             using var context = new EfCoreContext(options);
             context.Database.EnsureCreated();

@@ -50,10 +50,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showlog = false;
-            var options = this.CreateUniqueClassOptionsWithLogging<EfCoreContext>(log =>
+            var options = this.CreateUniqueMethodOptionsWithLogTo<EfCoreContext>(log =>
             {
                 if (showlog)
-                    _output.WriteLine(log.Message);
+                    _output.WriteLine(log);
             });
             using (var context = new EfCoreContext(options))
             {

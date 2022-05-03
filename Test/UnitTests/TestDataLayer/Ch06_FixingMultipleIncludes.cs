@@ -65,10 +65,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showlog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<Chapter06Context>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<Chapter06Context>(log =>
             {
                 if (showlog)
-                    _output.WriteLine(log.Message);
+                    _output.WriteLine(log);
             });
             using var context = new Chapter06Context(options);
             context.Database.EnsureCreated();

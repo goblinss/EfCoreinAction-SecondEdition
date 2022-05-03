@@ -78,10 +78,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showlog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<EfCoreContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<EfCoreContext>(log =>
             {
                 if (showlog)
-                    _output.WriteLine(log.Message);
+                    _output.WriteLine(log);
             });
             using var context = new EfCoreContext(options);
             context.Database.EnsureCreated();

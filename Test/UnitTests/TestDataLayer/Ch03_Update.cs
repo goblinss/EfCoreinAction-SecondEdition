@@ -63,11 +63,11 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showLog = false;
-            //var options = SqliteInMemory.CreateOptionsWithLogging<EfCoreContext>(log =>
-            var options = this.CreateUniqueClassOptionsWithLogging<EfCoreContext>(log =>
+            //var options = SqliteInMemory.CreateOptionsWithLogTo<EfCoreContext>(log =>
+            var options = this.CreateUniqueMethodOptionsWithLogTo<EfCoreContext>(log =>
             {
                 if (showLog)
-                    _output.WriteLine(log.DecodeMessage());
+                    _output.WriteLine(log);
             });
             using var context = new EfCoreContext(options);
             context.Database.EnsureClean();
@@ -93,10 +93,10 @@ namespace Test.UnitTests.TestDataLayer
         {
             //SETUP
             var showLog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<EfCoreContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<EfCoreContext>(log =>
             {
                 if (showLog)
-                    _output.WriteLine(log.DecodeMessage());
+                    _output.WriteLine(log);
             });
             using var context = new EfCoreContext(options);
             context.Database.EnsureCreated();
@@ -148,10 +148,10 @@ namespace Test.UnitTests.TestDataLayer
             //SETUP
             string json;
             var showLog = false;
-            var options = SqliteInMemory.CreateOptionsWithLogging<EfCoreContext>(log =>
+            var options = SqliteInMemory.CreateOptionsWithLogTo<EfCoreContext>(log =>
             {
                 if (showLog)
-                    _output.WriteLine(log.DecodeMessage());
+                    _output.WriteLine(log);
             });
             using var context = new EfCoreContext(options);
             context.Database.EnsureCreated();
